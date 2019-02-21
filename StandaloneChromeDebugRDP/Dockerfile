@@ -17,8 +17,7 @@ RUN echo "${TZ}" > /etc/timezone \
 ENV LANGUAGE fr_FR.UTF-8
 ENV LANG fr_FR.UTF-8
 RUN locale-gen fr_FR.UTF-8 \
-  && dpkg-reconfigure --frontend noninteractive locales
-   \
+  && dpkg-reconfigure --frontend noninteractive locales \
    && apt-get update -y \
    && apt-get -y --no-install-recommends install \
     language-pack-fr \
