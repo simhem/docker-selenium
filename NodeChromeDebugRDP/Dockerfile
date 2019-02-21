@@ -1,4 +1,4 @@
-FROM selenium/standalone-chrome-debug:3.4.0-francium
+FROM selenium/node-chrome-debug:3.4.0-francium
 
 USER root
 
