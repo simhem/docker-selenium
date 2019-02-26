@@ -26,7 +26,7 @@ RUN locale-gen fr_FR.UTF-8 \
 #===============
 # XRDP settings
 #===============
-# RUN apt-get update -y \
+RUN apt-get update -y \
   && apt-get -y install \
   xrdp \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
