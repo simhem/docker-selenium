@@ -33,9 +33,9 @@ RUN apt-get update -y \
 
 ADD xrdp.ini /etc/xrdp/
 
-RUN sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
-
 USER seluser
+
+RUN sudo sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
 
 EXPOSE 3389
 
