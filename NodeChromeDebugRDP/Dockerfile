@@ -35,6 +35,7 @@ ADD xrdp.ini /etc/xrdp/
 
 USER seluser
 
+RUN sudo sed -i 's/$GEOMETRY//g' entry_point.sh
 RUN sudo sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
 
 EXPOSE 3389
