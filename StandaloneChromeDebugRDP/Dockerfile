@@ -41,7 +41,7 @@ RUN locale-gen fr_FR.UTF-8 \
 # RUN rm -rf /tmp/language-pack-fr-base.deb
 # RUN rm -rf /tmp/language-pack-fr.deb
 
-# USER seluser
+USER seluser
 
 ADD xrdp.ini /etc/xrdp/
 
