@@ -33,7 +33,7 @@ RUN apt-get update -y \
 
 ADD xrdp.ini /etc/xrdp/
 
-# USER seluser
+USER seluser
 
 RUN sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
 
