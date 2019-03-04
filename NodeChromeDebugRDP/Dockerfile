@@ -29,7 +29,7 @@ RUN locale-gen fr_FR.UTF-8 \
 RUN apt-get update -y \
   && apt-get -y install \
   xrdp \
-  pstree \
+  psmisc \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 ADD xrdp.ini /etc/xrdp/
