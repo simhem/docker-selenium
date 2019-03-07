@@ -46,7 +46,7 @@ USER seluser
 ADD xrdp.ini /etc/xrdp/
 
 # RUN sed -i 's/^Terminal/#&/' /etc/xrdp/sesman.ini
-RUN sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
+RUN sudo sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
 
 EXPOSE 3389
 
