@@ -37,8 +37,10 @@ RUN usermod -a -G root seluser
 
 #USER seluser
 
+RUN mkdir -p ~/.vnc \
+  && x11vnc -storepasswd secret ~/.vnc/passwd
+
 #RUN sudo sed -i 's/$GEOMETRY/1024x768x24/g' /opt/bin/entry_point.sh
 RUN sudo sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
 
 EXPOSE 3389
-
