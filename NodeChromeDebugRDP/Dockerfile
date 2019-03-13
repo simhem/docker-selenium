@@ -36,7 +36,7 @@ RUN apt-get update -y \
 
 ADD xrdp.ini /etc/xrdp/
 RUN usermod -a -G sudo seluser
-
+RUN echo root:root | chpasswd
 #USER seluser
 
 
