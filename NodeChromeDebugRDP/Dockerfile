@@ -39,7 +39,7 @@ RUN usermod -aG sudo seluser
 
 USER seluser
 
-RUN sudo sed -i '/x11vnc /a sudo -H \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
+RUN sudo sed -i '/x11vnc /a -H \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
 RUN sudo sed -i '/x11vnc /d' /opt/bin/entry_point.sh
 
 EXPOSE 3389
