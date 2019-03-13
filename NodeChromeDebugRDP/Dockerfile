@@ -35,7 +35,8 @@ RUN apt-get update -y \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 ADD xrdp.ini /etc/xrdp/
-RUN usermod -aG sudo seluser 
+#RUN usermod -aG sudo seluser 
+RUN adduser seluser sudo
 
 RUN mkdir -p ~/.vnc \
   && x11vnc -storepasswd secret ~/.vnc/passwd
