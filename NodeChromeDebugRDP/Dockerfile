@@ -35,7 +35,7 @@ RUN apt-get update -y \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 ADD xrdp.ini /etc/xrdp/
-RUN usermod -a -G root seluser
+RUN usermod -a -G sudo seluser
 
 #USER seluser
 
