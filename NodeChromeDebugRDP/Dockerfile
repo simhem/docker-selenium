@@ -30,6 +30,8 @@ RUN apt-get update -y \
   && apt-get -y install \
   xrdp \
   net-tools \
+  vim \
+  psmisc \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 ADD xrdp.ini /etc/xrdp/
