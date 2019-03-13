@@ -40,7 +40,7 @@ RUN usermod -a -G sudo seluser
 #USER seluser
 
 
-RUN sed -i '/xvfb-run/s/^/sudo -H -u seluser /' /opt/bin/entry_point.sh
+# RUN sed -i '/xvfb-run/s/^/sudo -H -u seluser /' /opt/bin/entry_point.sh
 RUN sudo sed -i '/x11vnc /a \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
 RUN sudo sed -i '/x11vnc /d' /opt/bin/entry_point.sh
 
