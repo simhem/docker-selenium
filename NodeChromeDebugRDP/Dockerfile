@@ -39,6 +39,7 @@ RUN usermod -a -G sudo seluser
 RUN echo root:root | chpasswd
 #USER seluser
 
+RUN rm -rf /opt/bin/entry_point.sh
 COPY entry_point.sh /opt/bin/entry_point.sh
 RUN chmod 777 /opt/bin/entry_point.sh
 
