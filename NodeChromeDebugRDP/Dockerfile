@@ -38,9 +38,9 @@ ADD xrdp.ini /etc/xrdp/
 RUN usermod -a -G sudo seluser
 RUN echo root:root | chpasswd
 #USER seluser
-RUN rm -rf /opt/bin/entry_point.sh
 
-ADD entry_point.sh /opt/bin/
+COPY entry_point.sh /opt/bin/entry_point.sh
+RUN chmod 777 /opt/bin/entry_point.sh
 
 #RUN sed -i 's/X11DisplayOffset=10/X11DisplayOffset=99/g' /etc/xrdp/sesman.ini
 
