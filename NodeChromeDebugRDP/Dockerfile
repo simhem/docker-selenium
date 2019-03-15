@@ -41,7 +41,7 @@ RUN mkdir -p ~/.vnc \
 
 USER seluser
 
-RUN sed -i '/x11vnc /a /usr/sbin/xrdp &' /opt/bin/entry_point.sh
+RUN sudo sed -i '/x11vnc /a /usr/sbin/xrdp &' /opt/bin/entry_point.sh
 RUN sudo sed -i '/x11vnc /a \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
 #RUN sed -i '/x11vnc /d' /opt/bin/entry_point.sh
 
