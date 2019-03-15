@@ -41,8 +41,9 @@ RUN echo root:root | chpasswd
 
 
 # RUN sed -i '/xvfb-run/s/^/sudo -H -u seluser /' /opt/bin/entry_point.sh
-RUN sed -i 's/X11DisplayOffset=10/X11DisplayOffset=99/g' /etc/xrdp/sesman.ini
+#RUN sed -i 's/X11DisplayOffset=10/X11DisplayOffset=99/g' /etc/xrdp/sesman.ini
 
+RUN sudo sed -i 's/fluxbox.*/fluxbox/g' /opt/bin/entry_point.sh
 RUN sudo sed -i '/xvfb-run /d' /opt/bin/entry_point.sh
 RUN sudo sed -i '/x11vnc /a \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
 RUN sudo sed -i '/x11vnc /d' /opt/bin/entry_point.sh
