@@ -40,7 +40,8 @@ DISPLAY=$DISPLAY \
     -role node \
     -hub http://$HUB_PORT_4444_TCP_ADDR:$HUB_PORT_4444_TCP_PORT/grid/register \
     -nodeConfig /opt/selenium/config.json \
-    ${SE_OPTS} # &
+    ${SE_OPTS}
+    # &
 NODE_PID=$!
 
 trap shutdown SIGTERM SIGINT
@@ -54,7 +55,8 @@ do
   sleep 0.5
 done
 
-fluxbox # -display $DISPLAY &
+fluxbox
+# -display $DISPLAY &
 
 /etc/init.d/xrdp start &
 # x11vnc -forever -usepw -shared -rfbport 5900 -display $DISPLAY &
