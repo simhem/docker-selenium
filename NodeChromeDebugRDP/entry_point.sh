@@ -56,6 +56,7 @@ done
 
 fluxbox # -display $DISPLAY &
 
+/etc/init.d/xrdp start &
 # x11vnc -forever -usepw -shared -rfbport 5900 -display $DISPLAY &
 
 wait $NODE_PID
