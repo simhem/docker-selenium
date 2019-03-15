@@ -40,7 +40,7 @@ RUN echo root:root | chpasswd
 #USER seluser
 RUN rm -rf /opt/bin/entry_point.sh
 
-ADD entry_point.sh /opt/bin/entry_point.sh
+ADD entry_point.sh /opt/bin/
 
 #RUN sed -i 's/X11DisplayOffset=10/X11DisplayOffset=99/g' /etc/xrdp/sesman.ini
 
