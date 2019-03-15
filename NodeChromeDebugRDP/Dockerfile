@@ -35,17 +35,14 @@ RUN apt-get update -y \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 ADD xrdp.ini /etc/xrdp/
-#RUN usermod -aG sudo seluser 
-RUN adduser seluser sudo
 
 RUN mkdir -p ~/.vnc \
   && x11vnc -storepasswd secret ~/.vnc/passwd
 
-RUN chown seluser:seluser -R /opt/bin/
 USER seluser
 
 RUN sed -i '/x11vnc /a /usr/sbin/xrdp &' /opt/bin/entry_point.sh
-#RUN sudo sed -i '/x11vnc /a \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
-RUN sed -i '/x11vnc /d' /opt/bin/entry_point.sh
+RUN sudo sed -i '/x11vnc /a \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
+#RUN sed -i '/x11vnc /d' /opt/bin/entry_point.sh
 
 EXPOSE 3389
