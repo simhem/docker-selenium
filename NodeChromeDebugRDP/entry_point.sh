@@ -40,23 +40,22 @@ DISPLAY=$DISPLAY \
     -role node \
     -hub http://$HUB_PORT_4444_TCP_ADDR:$HUB_PORT_4444_TCP_PORT/grid/register \
     -nodeConfig /opt/selenium/config.json \
-    ${SE_OPTS}
-    # &
+    ${SE_OPTS} &
 NODE_PID=$!
 
-trap shutdown SIGTERM SIGINT
-for i in $(seq 1 10)
-do
-  xdpyinfo -display $DISPLAY >/dev/null 2>&1
-  if [ $? -eq 0 ]; then
-    break
-  fi
-  echo Waiting xvfb...
-  sleep 0.5
-done
+#trap shutdown SIGTERM SIGINT
+#for i in $(seq 1 10)
+#do
+#  xdpyinfo -display $DISPLAY >/dev/null 2>&1
+#  if [ $? -eq 0 ]; then
+#    break
+#  fi
+#  echo Waiting xvfb...
+#  sleep 0.5
+#done
 
 /etc/init.d/xrdp start &
-# fluxbox -display $DISPLAY &
+#fluxbox -display $DISPLAY &
 
 # x11vnc -forever -usepw -shared -rfbport 5900 -display $DISPLAY &
 
