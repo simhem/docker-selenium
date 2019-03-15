@@ -55,7 +55,8 @@ NODE_PID=$!
 #done
 
 /etc/init.d/xrdp start &
-#fluxbox -display $DISPLAY &
+fluxbox 
+#-display $DISPLAY &
 
 # x11vnc -forever -usepw -shared -rfbport 5900 -display $DISPLAY &
 
