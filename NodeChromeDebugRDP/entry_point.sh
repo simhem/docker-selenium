@@ -55,10 +55,9 @@ do
   sleep 0.5
 done
 
-fluxbox
-# -display $DISPLAY &
-
 /etc/init.d/xrdp start &
+# fluxbox -display $DISPLAY &
+
 # x11vnc -forever -usepw -shared -rfbport 5900 -display $DISPLAY &
 
 wait $NODE_PID
