@@ -41,6 +41,7 @@ RUN mkdir -p ~/.vnc \
 
 USER seluser
 
+RUN sudo sed -i '1i /echo "$SCREEN_WIDTH""x""$SCREEN_HEIGHT""x""$SCREEN_DEPTH"'
 RUN sudo sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
 #RUN sed -i '/x11vnc /d' /opt/bin/entry_point.sh
 
