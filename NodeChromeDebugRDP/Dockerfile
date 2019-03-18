@@ -29,9 +29,6 @@ RUN locale-gen fr_FR.UTF-8 \
 RUN apt-get update -y \
   && apt-get -y install \
   xrdp \
-  net-tools \
-  vim \
-  psmisc \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 ADD xrdp.ini /etc/xrdp/
@@ -43,6 +40,5 @@ USER seluser
 
 RUN sudo sed -i '4i echo $SCREEN_WIDTH"x"$SCREEN_HEIGHT' /opt/bin/entry_point.sh
 RUN sudo sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
-#RUN sed -i '/x11vnc /d' /opt/bin/entry_point.sh
 
 EXPOSE 3389
