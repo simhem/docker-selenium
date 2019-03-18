@@ -35,22 +35,13 @@ RUN apt-get update -y \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
 ADD xrdp.ini /etc/xrdp/
-RUN usermod -a -G sudo seluser
-RUN echo root:root | chpasswd
-#USER seluser
 
-RUN rm -rf /opt/bin/entry_point.sh
-COPY entry_point.sh /opt/bin/entry_point.sh
-RUN chmod 777 /opt/bin/entry_point.sh
+RUN mkdir -p ~/.vnc \
+  && x11vnc -storepasswd secret ~/.vnc/passwd
 
-#RUN sed -i 's/X11DisplayOffset=10/X11DisplayOffset=99/g' /etc/xrdp/sesman.ini
+USER seluser
 
-#RUN sudo sed -i 's/fluxbox.*/fluxbox/g' /opt/bin/entry_point.sh
-#RUN sudo sed -i '/xvfb-run /d' /opt/bin/entry_point.sh
-#RUN sudo sed -i '/x11vnc /a \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
-#RUN sudo sed -i '/x11vnc /d' /opt/bin/entry_point.sh
-
-
+RUN sudo sed -i '4i echo $SCREEN_WIDTH"x"$SCREEN_HEIGHT' /opt/bin/entry_point.sh
+RUN sudo sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
 
 EXPOSE 3389
-
