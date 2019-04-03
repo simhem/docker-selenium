@@ -40,5 +40,6 @@ USER seluser
 
 RUN sudo sed -i '4i echo $SCREEN_WIDTH"x"$SCREEN_HEIGHT' /opt/bin/entry_point.sh
 RUN sudo sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
+RUN sudo sed -i 's/x11vnc -forever -usepw -shared -rfbport 5900 -display $DISPLAY &/x11vnc -forever -usepw -shared -rfbport 5900 -display -noxdamage $DISPLAY &/g' /opt/bin/entry_point.sh
 
 EXPOSE 3389
