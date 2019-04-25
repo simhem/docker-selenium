@@ -1,5 +1,4 @@
-FROM selenium/node-firefox-debug:3.4.0-francium
-
+FROM selenium/node-firefox-debug:3.7.0-arsenic
 USER root
 
 #===================
