@@ -1,4 +1,5 @@
 FROM selenium/node-firefox-debug:3.7.0-arsenic
+
 USER root
 
 #===================
@@ -21,6 +22,7 @@ RUN locale-gen fr_FR.UTF-8 \
   && apt-get -y --no-install-recommends install \
   language-pack-fr \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
+
 
 RUN mkdir -p ~/.vnc \
   && x11vnc -storepasswd secret ~/.vnc/passwd
