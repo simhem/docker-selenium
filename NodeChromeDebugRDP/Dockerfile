@@ -23,25 +23,12 @@ RUN locale-gen fr_FR.UTF-8 \
   language-pack-fr \
   && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
-#===============
-# XRDP settings
-#===============
-RUN apt-get update -y \
-  && apt-get -y install \
-  xrdp \
-  net-tools \
-  vim \
-  psmisc \
-  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
-
-ADD xrdp.ini /etc/xrdp/
-
 RUN mkdir -p ~/.vnc \
   && x11vnc -storepasswd secret ~/.vnc/passwd
 
 USER seluser
 
 RUN sudo sed -i '4i echo $SCREEN_WIDTH"x"$SCREEN_HEIGHT' /opt/bin/entry_point.sh
-RUN sudo sed -i '/x11vnc /a sudo \/etc\/init.d\/xrdp start &' /opt/bin/entry_point.sh
+RUN sudo sed -i '/x11vnc /c x11vnc -forever -shared -rfbport 5900 -display $DISPLAY &' /opt/bin/entry_point.sh
 
 EXPOSE 3389
